@@ -1,0 +1,14 @@
+POST http://localhost:3000/api/wilder
+Content-Type: application/json
+
+{
+    "name": "REST client Wilder"
+}
+###
+GET http://localhost:3000/api/wilder
+
+###
+DELETE http://localhost:3000/api/wilder
+
+###
+PUT http://localhost:3000/api/wilder
