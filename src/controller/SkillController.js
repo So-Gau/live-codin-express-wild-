@@ -8,9 +8,10 @@ module.exports = {
         .getRepository(Skill)
         .save(req.body)
         .then(() => {
-            res.send("Created Skill");
+            res.send("Skill Created");
         })
-        .catch(() => {
+        .catch((err) => {
+            console.log("error", err)
             res.send("Error while creating the skill");
         });
     },

@@ -11,9 +11,18 @@ GET http://localhost:3000/api/wilder
 DELETE http://localhost:3000/api/wilder/3
 
 ###
-PUT http://localhost:3000/api/wilder
+PUT http://localhost:3000/api/wilder/4
 Content-Type: application/json
 
 {
     "name": "clara"
+}
+
+###
+PUT http://localhost:3000/api/wilder/addskill
+Content-Type: application/json
+
+{
+    "wilderName": "clara",
+    "skillName": "Symfony"
 }

@@ -14,17 +14,19 @@ app.get("/", (req, res) =>{
     res.send("Hello World");
 });
 
-// for api wilder
+// lecture dans l'ordre des routes
 app.post("/api/wilder", wilderController.create);
-app.get("/api/wilder", wilderController.read);
-app.delete("/api/wilder/:id", wilderController.delete);
-app.put("/api/wilder/:id", wilderController.update);
-
-//for api skill
 app.post("/api/skill", skillController.create);
+app.get("/api/wilder", wilderController.read);
+app.put("/api/wilder/addskill", wilderController.addSkill);
 app.get("/api/skill", skillController.read);
+
+app.put("/api/wilder/:id", wilderController.update);
+app.delete("/api/wilder/:id", wilderController.delete);
 app.delete("/api/skill/:id", skillController.delete);
 app.put("/api/skill/:id", skillController.update);
+
+
 
 //start
 const start = async () => {
