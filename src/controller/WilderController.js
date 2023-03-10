@@ -1,6 +1,7 @@
 const Skill = require("../entity/Skill");
 const Wilder = require("../entity/Wilder");
 const dataSource = require("../utils").dataSource;
+const In = require("typeorm").In;
 
 module.exports = {
     //methods create
@@ -18,7 +19,9 @@ module.exports = {
     //methods read
     read: async (req, res) => {
         try {
-            const allWilders = await dataSource.getRepository(Wilder).find();
+            const allWilders = await dataSource
+            .getRepository(Wilder)
+            .find({ order: { id: "DESC" } });
             res.send(allWilders);
         } catch (err) {
             console.log(err);
@@ -48,16 +51,16 @@ module.exports = {
         }
     },
     //methods addskill
-    addSkill: async (req, res) => {
+    addSkills: async (req, res) => {
         try {
             const wilderToUpdate = await dataSource
                 .getRepository(Wilder)
                 .findOneByOrFail({ name: req.body.wilderName});
             console.log("wilder", wilderToUpdate);
-            const skillToAdd = await dataSource
+            const skillsToAdd = await dataSource
                 .getRepository(Skill)
-                .findOneByOrFail({ name: req.body.skillName });
-            wilderToUpdate.skills = [...wilderToUpdate.skills, skillToAdd];
+                .findBy({ name: In(req.body.skillName) });
+            wilderToUpdate.skills = [...wilderToUpdate.skills, ...skillsToAdd];
             await dataSource.getRepository(Wilder).save(wilderToUpdate);
             res.send("Skill added to wilder");
         } catch (err) {

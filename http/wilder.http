@@ -2,13 +2,15 @@ POST http://localhost:3000/api/wilder
 Content-Type: application/json
 
 {
-    "name": "REST client Wilder"
+    "name": "laura",
+    "city": "canne"
 }
 ###
 GET http://localhost:3000/api/wilder
 
 ###
-DELETE http://localhost:3000/api/wilder/3
+DELETE http://localhost:3000/api/wilder/12
+
 
 ###
 PUT http://localhost:3000/api/wilder/4
@@ -23,6 +25,9 @@ PUT http://localhost:3000/api/wilder/addskill
 Content-Type: application/json
 
 {
-    "wilderName": "clara",
-    "skillName": "Symfony"
+    "wilderName": "laura",
+    "skillName": [
+        "js",
+        "symfony"
+    ]
 }

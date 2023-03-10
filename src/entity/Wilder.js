@@ -11,13 +11,16 @@ module.exports = new EntitySchema({
         name: {
             type: "text",
         },
+        city: {
+            type: "text", nullable: true
+        },
     },
     relations: {
         skills: {
             target: "Skill",
             type: "many-to-many",
             joinTable: true,
-            eager: true,
+            eager: true, // recupère le wilder directement
         }
     }
 });
